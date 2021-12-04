@@ -1,0 +1,36 @@
+.col-xs-12.p-bottom-5.p-0
+  form.form-horizontal
+    .col-xs-2.p-0
+      button.btn.btn-xs.btn-success(type='button' ng-click='vm.add()')
+        i.fa.fa-check
+        |  Adaugă
+    .col-xs-8
+      p.font-title Informații
+
+.col-xs-12.p-0
+  table.table.table-bordered.table-hover.p-0
+    thead
+      tr.warning
+        th Denumire
+        th(width='150px') Tip
+        th(width='150px') Apreciată
+        th(width='48px' rowspan='2')
+      tr.warning
+        td
+          input.form-control.input-xs(placeholder='Căutare...')
+        td
+          input.form-control.input-xs(placeholder='Căutare...')
+        td
+          input.form-control.input-xs(placeholder='Căutare...')
+#view.col-xs-12.no-scroll-bar.p-0
+  #scroll.view-scroll
+    table.table.table-bordered.table-hover.p-0
+      tbody(infinite-scroll='vm.changeMaxLimit(vm.data, vm.limit)' infinite-scroll-distance='1' infinite-scroll-container='".view-scroll"')
+        tr(ng-repeat = 'r in vm.data | limitTo: vm.limit.max' ng-dblclick='vm.edit(r, $index)')
+          td.text-center(ng-bind='r.name')
+          td.text-center(width='150px' ng-bind='r.type')
+          td.text-center(width='150px' ng-bind='r.liked')
+          td.text-center.cursor-pointer(width='20px' ng-click='vm.edit(r, $index)' uib-tooltip='Editează rând')
+            i.glyphicon.glyphicon-edit.text-primary
+          td.text-center.cursor-pointer(width='20px' ng-click='vm.remove(r, $index)' uib-tooltip='Șterge rând')
+            i.fa.fa-trash.text-danger

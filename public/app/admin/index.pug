@@ -1,0 +1,67 @@
+meta(charset='UTF-8')
+meta(name='viewport' content='width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0')
+meta(http-equiv='X-UA-Compatible' content='IE=edge')
+meta(name='author' content='Your Consulting TEAM')
+title Test-app-js
+
+// Stylesheet
+link(rel='stylesheet' href='lib/bootstrap/dist/css/bootstrap.min.css')
+link(rel='stylesheet' href='customLibs/angular-dialog-service/dialogs.min.css')
+link(rel='stylesheet' href='lib/angular-ui-grid/ui-grid.min.css')
+link(rel='stylesheet' href='lib/font-awesome/css/font-awesome.min.css')
+
+link(rel='stylesheet' href='customLibs/angular-loading/angular-loading.css')
+link(rel='stylesheet' href='customLibs/angular-toastr/angular-toastr.min.css')
+link(rel='stylesheet' href='customLibs/angular-ui-select/select.min.css')
+link(rel='stylesheet' href='customLibs/select2/select2.css')
+
+link(rel='stylesheet' href='dist/css/app-less.min.css')
+
+// Library
+script(src='lib/jquery/dist/jquery.min.js')
+script(src='lib/angular/angular.min.js')
+script(src='customLibs/angular-bootstrap/ui-bootstrap.min.js')
+script(src='customLibs/angular-bootstrap/ui-bootstrap-tpls.min.js')
+script(src='customLibs/angular-cookies/angular-cookies.min.js')
+script(src='customLibs/angular-dialog-service/dialogs.min.js')
+script(src='customLibs/angular-resource/angular-resource.min.js')
+script(src='customLibs/angular-route/angular-route.min.js')
+script(src='customLibs/angular-sanitize/angular-sanitize.min.js')
+script(src='lib/angular-ui-grid/ui-grid.min.js')
+script(src='lib/bootstrap/dist/js/bootstrap.min.js')
+script(src='lib/js-xlsx/dist/xlsx.core.min.js')
+script(src='lib/lodash/dist/lodash.min.js')
+script(src='lib/socket.io-client/dist/socket.io.js')
+script(src='lib/angular-bind-notifier/dist/angular-bind-notifier.js')
+
+script(src='customLibs/ngInfiniteScroll/ng-infinite-scroll.min.js')
+script(src='customLibs/ngstorage/ngStorage.min.js')
+script(src='customLibs/spin.js/spin.js')
+script(src='customLibs/angular-bootstrap-contextmenu/contextMenu.js')
+script(src='customLibs/angular-loading/angular-loading.min.js')
+script(src='customLibs/angular-toastr/angular-toastr.min.js')
+script(src='customLibs/angular-toastr/angular-toastr.tpls.min.js')
+script(src='customLibs/angular-ui-select/select.min.js')
+script(src='customLibs/async/async.min.js')
+script(src='customLibs/ace-builds/src-min-noconflict/ace.js')
+script(src='customLibs/angular-ui-ace/ui-ace.min.js')
+script(src='customLibs/angular-hotkeys/hotkeys.min.js')
+
+script(src='dist/admin.min.js')
+script(src='dist/common.min.js')
+script(src='dist/information.min.js')
+
+body
+	block content
+		body(ng-app='taxes-app' ng-controller='mainCtrl')
+			div(dw-loading='loading-container' dw-loading-options='{text: "Datele în curs de procesare..."}')
+				include main/header
+				.container-fluid
+					.body
+						div(ng-view='')
+
+script(type='text/javascript').
+	window.onload = function () {
+		window.moveTo(0, 0);
+		window.resizeTo(screen.availWidth, screen.availHeight);
+	};

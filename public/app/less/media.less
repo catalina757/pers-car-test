@@ -1,0 +1,145 @@
+/* ------------------------------------------------ WIDTH ------------------------------------------------ */
+
+@media (min-width: 1368px) {
+  .font-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1367px) {
+
+  .w-500-px .select2-drop {
+    width: 400px;
+  }
+
+  input[type=checkbox] {
+    margin: 1px 0 0;
+  }
+
+  body, .dropdown-menu, input[type=date] {
+    font-size: 12px;
+  }
+
+  .dialogs-default .modal-footer {
+    button {
+      font-size: 12px;
+    }
+  }
+
+  .font-title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .xs-display-none {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  label {
+    margin-bottom: 1px;
+  }
+
+  .navbar-header {
+    float: left;
+  }
+
+  ul.navbar-nav {
+    display: inline-block;
+    li {
+      float: left;
+    }
+  }
+
+  ul.dropdown-menu li {
+    width: 100%;
+    a {
+      padding: 1px 10px !important;
+    }
+  }
+
+  li.dropdown-submenu {
+    ul {
+      li {
+        width: 100%;
+        a {
+          padding: 1px 10px !important;
+        }
+      }
+    }
+  }
+
+  .navbar-default {
+    .navbar-nav {
+      li {
+        a {
+          &:focus, &:hover {
+            color: #337ab7 !important;
+          }
+        }
+        ul.dropdown-menu {
+          li {
+            a {
+              color: #333 !important;
+              &:focus, &:hover {
+                color: #337ab7 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-right {
+    float: right;
+  }
+
+  .navbar-nav {
+    margin: 0;
+  }
+
+  .navbar-nav .open .dropdown-menu {
+    position: absolute;
+    background-color: #fcfdfd;
+    border: 1px solid rgba(0, 0, 0, .15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-right {
+    margin-right: 0;
+  }
+}
+
+/* ------------------------------------------------ HEIGHT ------------------------------------------------ */
+@media (max-height: 960px) {
+  .message-text {
+    max-height: 160px;
+  }
+}
+
+@media (max-height: 800px) {
+  .message-text {
+    max-height: 140px;
+  }
+}
+
+@media (max-height: 720px) {
+  .message-text {
+    max-height: 95px;
+  }
+}
+
+@media (max-height: 450px) {
+  .modal-body {
+    min-height: 300px;
+  }
+
+  .main-menu {
+    top: 40px !important;
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "name": "taxe",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Impozite si taxe locale",
+  "main": "server/server.js",
+  "scripts": {
+    "postinstall": "node ./node_modules/bower/bin/bower install",
+    "build": "gulp",
+    "start": "node server/server.js",
+    "jshint": "jshint -c .jshintrc --exclude-path .jshintignore .",
+    "jshint-staged": "lint-staged -c .lintstagedrc -q"
+  },
+  "dependencies": {
+    "@babel/core": "^7.14.5",
+    "@babel/plugin-transform-for-of": "7.13.0",
+    "@babel/preset-env": "^7.14.5",
+    "async": "^3.2.0",
+    "body-parser": "1.19.0",
+    "bower": "^1.8.12",
+    "bwip-js": "^3.0.0",
+    "compression": "1.7.4",
+    "cookie-parser": "1.4.5",
+    "express": "^4.17.1",
+    "express-timeout-handler": "^2.2.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "8.0.0",
+    "gulp-clean-css": "4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-less": "5.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-uglify": "^3.0.2",
+    "handlebars": "4.7.7",
+    "helmet": "4.6.0",
+    "jslint": "^0.12.1",
+    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken-refresh": "^5.7.0",
+    "konfig": "^0.2.1",
+    "lodash": "^4.17.20",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.33",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "node-forge": "^0.10.0",
+    "node-promise": "^0.5.14",
+    "nodemailer": "6.6.1",
+    "pdf-merger-js": "^3.1.0",
+    "pg": "8.6.0",
+    "phantom": "^6.3.0",
+    "pug": "^3.0.2",
+    "sequelize": "6.6.5",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "4.1.2",
+    "socket.io-redis": "^6.1.1",
+    "xlsx": "^0.17.1"
+  },
+  "devDependencies": {
+    "connect-livereload": "^0.6.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-livereload": "^4.0.2",
+    "jshint": "^2.13.0",
+    "lint-staged": "^11.1.2",
+    "pre-commit": "^1.2.2",
+    "with-env": "^1.0.0"
+  },
+  "engines": {
+    "node": "14.17.0",
+    "npm": "6.14.13"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "pre-commit": [
+    "jshint-staged"
+  ]
+}

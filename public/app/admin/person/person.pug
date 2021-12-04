@@ -1,0 +1,40 @@
+.col-xs-12.p-bottom-5.p-0
+  form.form-horizontal
+    .col-xs-2.p-0
+      button.btn.btn-xs.btn-success(type='button')
+        i.fa.fa-check
+        |  Adaugă
+    .col-xs-8
+      p.font-title Persoane
+
+.col-xs-12.p-0
+  table.table.table-bordered.table-hover.p-0
+    thead
+      tr.warning
+        th(width='48px' rowspan='2') Nr. crt.
+        th(width='150px') Nume, Prenume
+        th(width='150px') CNP
+        th(width='48px' rowspan='2') Varsta
+        th(width='150px') Masini
+        th(width='48px' rowspan='2')
+      tr.warning
+        td
+          input.form-control.input-xs(placeholder='Căutare...')
+        td
+          input.form-control.input-xs(placeholder='Căutare...')
+        td
+          input.form-control.input-xs(placeholder='Căutare...')
+#view.col-xs-12.no-scroll-bar.p-0
+  #scroll.view-scroll
+    table.table.table-bordered.table-hover.p-0
+      tbody(infinite-scroll='vm.changeMaxLimit(vm.data, vm.limit)' infinite-scroll-distance='1' infinite-scroll-container='".view-scroll"')
+        tr
+          td.text-center(width='48px') 1
+          td.text-center(width='152px') Condrea Catalina
+          td.text-center(width='152px') 2810304235814
+          td.text-center(width='48px') 40
+          td.text-center(width='152px') Skoda
+          td.text-center.cursor-pointer(width='23px' ng-click='vm.edit(r, $index)' uib-tooltip='Editează rând')
+            i.glyphicon.glyphicon-edit.text-primary
+          td.text-center.cursor-pointer(width='23px' ng-click='vm.remove(r, $index)' uib-tooltip='Șterge rând')
+            i.fa.fa-trash.text-danger

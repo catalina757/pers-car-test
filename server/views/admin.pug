@@ -1,0 +1,10 @@
+doctype html
+html(lang='ro')
+	head
+	include ../../public/app/admin/index
+
+script(type='text/javascript').
+	window.onload = function () {
+		window.moveTo(0, 0);
+		window.resizeTo(screen.availWidth, screen.availHeight);
+	};

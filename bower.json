@@ -1,0 +1,25 @@
+{
+  "name": "taxe",
+  "version": "0.0.0",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "1.8.2",
+    "angular-bind-notifier": "^1.1.11",
+    "angular-ui-grid": "4.10.2",
+    "bootstrap": "3.4.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "3.6.0",
+    "js-xlsx": "js-xlsx-style#beta",
+    "lodash": "^4.17.21",
+    "socket.io-client": "4.1.3"
+  },
+  "resolutions": {
+    "angular": "1.8.2"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "lib"
+  ]
+}

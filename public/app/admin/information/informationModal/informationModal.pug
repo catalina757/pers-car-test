@@ -1,0 +1,19 @@
+.modal-header
+  span {{id ? 'Adăugare rând' : 'Editare rând'}}
+.modal-body
+  .row
+    form.form-horizontal
+      .col-xs-12.p-bottom-10
+        label.control-label.col-xs-2 Denumire
+        .col-xs-10.p-0
+          input.form-control(ng-model='mm.modal.name')
+      .col-xs-12
+        label.control-label.col-xs-2 Tip
+        .col-xs-3.p-0
+          input.form-control(ng-model='mm.modal.type' type='number')
+        label.control-label.col-xs-2 Apreciată
+        .col-xs-2.p-top-3
+          input(type='checkbox' ng-model='mm.modal.liked')
+.modal-footer
+  button.btn.btn-default(ng-click='$dismiss()') Renunță
+  button.btn.btn-success(ng-click='mm.save(mm.modal)' ng-bind='mm.modal.id ? "Salvează" : "Adaugă"')

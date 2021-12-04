@@ -1,0 +1,8 @@
+default:
+    port    : #{process.env.PORT}
+    env     : #{process.env.NODE_ENV}
+    sKey    : #{process.env.ENCRYPTION_SECRET_KEY}
+
+    poolMax : #{process.env.POOL_MAX}
+    dbSsl   : #{process.env.DB_SSL}
+    dbUrl   : #{process.env.DATABASE_URL}

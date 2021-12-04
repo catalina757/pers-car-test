@@ -1,0 +1,46 @@
+//editable content for fiscal certificate
+.fiscal-certificate {
+	.indent {
+		text-indent: 30px;
+	}
+	.m-t-5 {
+		margin-top: 5px;
+	}
+}
+
+/* ---------------------------------------------- Confirm dialog with danger header ---------------------------------------------- */
+.dialog-danger {
+	.modal-header {
+		h4 {
+			.fa-check {
+				&:before {
+					content: "\f071";
+				}
+			}
+		}
+		background-color: #d5514f;
+	}
+	.btn {
+		padding: 3px 12px;
+	}
+	.btn-primary {
+		background-color: #fdfdfe;
+		border-color: #ccc;
+		color: #333334;
+		&:hover, &:focus {
+			background-color: #e4e4e5;
+			border-color: #acacad;
+			color: #333334;
+		}
+	}
+	.btn-default {
+		background-color: #d9534f;
+		border-color: #d43f3a;
+		color: #fdfdfe;
+		&:hover, &:focus {
+			background-color: #c9302c;
+			border-color: #ac2925;
+			color: #fdfdfe;
+		}
+	}
+}

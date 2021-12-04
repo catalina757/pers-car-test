@@ -1,0 +1,114 @@
+/* ---------------------------------------------- MODAL ---------------------------------------------- */
+.modal-dialog {
+  max-width: 1900px;
+  margin: 1px auto;
+}
+
+.modal.fade .modal-dialog, .modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.dialogs-default .modal-footer {
+  button {
+    padding: 3px 12px;
+  }
+}
+
+.modal-header > span, .modal-title {
+  font-size: 18px;
+  color: #1E5D9C;
+  opacity: 0.8;
+}
+
+.modal-header {
+  padding: 5px 10px;
+  .close {
+    display: none;
+  }
+}
+
+.modal-body {
+  padding: 5px 10px;
+  max-height: calc(100vh - 100px) !important;
+  overflow: auto;
+}
+
+.modal-body.visible-overflow-y{
+  overflow: visible!important;
+}
+
+.modal-footer {
+  padding: 2px 10px;
+  button {
+    padding: 1px 7px;
+    span {
+      margin-left: 5px;
+    }
+  }
+}
+
+.modal-xlg {
+  width: 99%;
+}
+
+.modal-sm {
+  width: 100%;
+  max-width: 700px !important;
+}
+
+.modal-sm-900 {
+  width: 100%;
+  max-width: 900px !important;
+}
+
+.modal-sm-1000 {
+  width: 100%;
+  max-width: 1000px !important;
+}
+
+.modal-md {
+  width: 100%;
+  max-width: 1280px !important;
+}
+
+.modal-lg {
+  width: 100%;
+  max-width: 1600px !important;
+}
+
+/* ---------------------------------------------- END MODAL ---------------------------------------------- */
+
+/* ---------------------------------------------- PDF MODAL ---------------------------------------------- */
+.full-screen .modal-dialog {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  width: 90%;
+  height: 100%;
+}
+
+.ifrm-pdf-full {
+  width: 100%;
+  height: 100%;
+}
+
+.full-screen .modal-content {
+  .ifrm-pdf-full
+}
+
+.full-screen .modal-body {
+  max-height: 99vh !important;
+  overflow-y: auto !important;
+  .ifrm-pdf-full
+}
+
+.height-title-pdf {
+  height: 32px;
+}
+
+.height-ifrm-pdf {
+  height: calc(100% - 32px);
+}
+
+/* ---------------------------------------------- END PDF MODAL ---------------------------------------------- */

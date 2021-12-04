@@ -1,0 +1,284 @@
+/* ---------------------------------------------- LOADING SPINNER ---------------------------------------------- */
+.dw-loading {
+	height: 100vh;
+}
+
+.dw-loading > .dw-loading-body > .dw-loading-text {
+	color: #3f6f80;
+	font-size: 20px;
+	top: 45px;
+}
+
+.dw-loading.dw-loading-overlay {
+	background-color: rgba(255, 255, 255, .4);
+}
+
+/* ---------------------------------------------- END LOADING SPINNER ---------------------------------------------- */
+
+/* ---------------------------------------------- GRID ---------------------------------------------- */
+.ui-grid {
+	height: calc(100vh - 100px);
+}
+
+.ui-grid-header-cell-wrapper {
+	text-align: center;
+}
+
+.ui-grid-header-cell-primary-focus {
+	padding: 2px;
+}
+
+.ui-grid-filter-container {
+	padding: 2px;
+}
+
+.ui-grid-column-menu-button .ui-grid-icon-angle-down {
+	visibility: hidden;
+}
+
+.ui-grid-filter-select {
+	height: 22px;
+	width: 88% !important;
+	margin-left: 0 !important;
+	margin-right: 12% !important;
+}
+
+.ui-grid-filter-button-select {
+	right: -2px !important;
+}
+
+/* ---------------------------------------------- END GRID ---------------------------------------------- */
+
+/* ---------------------------------------------- UI-SELECT ---------------------------------------------- */
+.w-250-px .select2-drop {
+	width: 250px;
+}
+.w-500-px .select2-drop {
+	width: 500px;
+}
+
+.w-600-px .select2-drop {
+	width: 600px;
+}
+.ui-select-placeholder{
+	width: auto!important;
+}
+.uiselect-menu-right .ui-select-dropdown {
+	right: 0;
+	left: auto;
+}
+
+// item 100% width for select multiple
+.width-100-pr, .width-100-pr > li {
+	width: 100% !important;
+}
+
+.p-right-10 ul.select2-choices {
+	padding-right: 10px;
+}
+
+// fix for input-group (works with .select-ellipsis)
+.input-group .ui-select-match, .input-group .select2-choice, .input-group .select2-arrow {
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+
+.search-container .select2-search input[type="search"] {
+	width: 100% !important;
+}
+
+.select-ellipsis {
+	position: relative;
+	width: 100%;
+	margin-bottom: 0;
+	display: table;
+	table-layout: fixed;
+}
+
+.select2-search input {
+	padding: 2px 20px 2px 5px;
+}
+.select2-results{
+	max-height: 300px;
+}
+
+.ui-select-multiple {
+	border-color: #aaa;
+}
+
+.select2-container-multi .select2-choices .select2-search-field input {
+	padding: 3px !important;
+	margin: 0;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice {
+	margin: 1px 0 1px 5px;
+}
+
+.select2-container .select2-choice{
+	line-height: 24px;
+}
+
+.select2-choices {
+	border-radius: 2px;
+}
+
+.select2-container {
+	width: 100%;
+}
+
+.select2-container .select2-choice abbr {
+	top: 6px;
+}
+
+.select-xs .select2-choice {
+	height: 24px;
+	line-height: 23px;
+	padding: 0 0 0 2px;
+	abbr {
+		top: 4px !important;
+	}
+	.select2-arrow b {
+		margin-top: -3px !important;
+	}
+}
+
+.select2-container .select2-choice {
+	background: #ffffff;
+	padding: 0 0 0 4px;
+	.select2-arrow {
+		border-left: none !important;
+		background-image: none;
+		background: #ffffff;
+	}
+}
+
+.select2-search-choice-close {
+	right: 20px !important;
+}
+
+/* ---------------------------------------------- END UI-SELECT ---------------------------------------------- */
+
+/* ---------------------------------------------- UIB-TYPEHEAD AUTOCOMPLETE ---------------------------------------------- */
+.panel-group {
+	margin-bottom: 6px;
+}
+
+[uib-typeahead-popup] {
+	max-height: 350px;
+	overflow-y: auto;
+	z-index: 9999;
+	width: 15%;
+}
+
+[uib-typeahead-popup] li {
+	left: 77% !important;
+}
+
+[uib-typeahead-popup] li a {
+	white-space: nowrap;
+	font-size: 13px;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+}
+
+/* ---------------------------------------------- END UIB-TYPEHEAD AUTOCOMPLETE ---------------------------------------------- */
+
+/* ---------------------------------------------- ACCORDION ---------------------------------------------- */
+.panel-body {
+	padding: 2px 2px;
+}
+
+.panel-default > .panel-heading {
+	padding: 4px 0;
+	height: 24px;
+}
+
+.panel-group {
+	margin-bottom: 10px;
+}
+
+.panel-group .panel + .panel {
+	margin-top: 3px;
+}
+
+h4.panel-title > a {
+	display: inline-block;
+	width: 100% !important;
+	height: 100%;
+	text-align: center;
+}
+
+/* ---------------------------------------------- END ACCORDION ---------------------------------------------- */
+
+/* ---------------------------------------------- TOASTR ---------------------------------------------- */
+#toast-container.toast-top-right {
+	top: 60px;
+}
+
+#toast-container div {
+	font-size: 14px;
+	width: auto !important;
+}
+
+/* ---------------------------------------------- END TOASTR ---------------------------------------------- */
+
+/* ---------------------------------------------- POPOVER ---------------------------------------------- */
+.popover-title {
+	background-color: #FAF6E2;
+	font-weight: bold;
+	padding: 6px 10px;
+	font-size: 13px;
+}
+
+.popover-content {
+	background-color: #FEFEFE;
+	padding: 6px 10px;
+	font-size: 12px;
+}
+
+.popover .arrow:after {
+	border-left-color: #FEFEFE !important;
+	border-right-color: #FEFEFE !important;
+}
+/* ---------------------------------------------- END POPOVER ---------------------------------------------- */
+
+/* ---------------------------------------------- DATE PICKER ---------------------------------------------- */
+.no-clear + div button.btn-info.uib-datepicker-current {
+	border-top-right-radius: 3px !important;
+	border-bottom-right-radius: 3px !important;
+}
+
+.no-clear + div button.btn-danger.uib-clear {
+	display: none !important;
+}
+
+
+.uib-datepicker-popup {
+	z-index: 9999;
+}
+
+.uib-month {
+	.btn {
+		padding: 3px 8px;
+	}
+}
+
+.uib-button-bar {
+	.btn {
+		padding: 2px 8px;
+	}
+}
+
+/* ---------------------------------------------- END DATE PICKER ---------------------------------------------- */
+
+//------------------------------------------font awesome----------------------------------
+.fa-check-square{
+	border: 1px solid #000000;
+	color: white!important;
+	background-color: black!important;
+}
+.fa-square{
+	border: 1px solid #000000;
+	color: white!important;
+}

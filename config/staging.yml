@@ -1,0 +1,2 @@
+default:
+    dbLogging : #{process.env.DB_LOG}

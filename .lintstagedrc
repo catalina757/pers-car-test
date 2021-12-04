@@ -1,0 +1,3 @@
+{
+  "*.js": "jshint -c .jshintrc --exclude-path .jshintignore"
+}
