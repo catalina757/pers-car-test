@@ -11,26 +11,34 @@
   table.table.table-bordered.table-hover.p-0
     thead
       tr.warning
-        th Denumire
-        th(width='150px') Tip
-        th(width='150px') Apreciată
-        th(width='48px' rowspan='2')
+        th(width='5%' rowspan='2') Nr. crt.
+        th(width='35%') Marca
+        th(width='35%') Model
+        th(width='5%') An fabricatie
+        th(width='5%') Capacitate cilindrica
+        th(width='5%' rowspan='2') Impozit (lei)
+        th(width='10%' rowspan='2')
       tr.warning
         td
-          input.form-control.input-xs(placeholder='Căutare...')
+          input.form-control.input-xs(placeholder='Căutare...' ng-model = 'search.marca')
         td
-          input.form-control.input-xs(placeholder='Căutare...')
+          input.form-control.input-xs(placeholder='Căutare...' ng-model = 'search.model')
         td
-          input.form-control.input-xs(placeholder='Căutare...')
+          input.form-control.input-xs(placeholder='Căutare...' ng-model = 'search.an_fab')
+        td
+          input.form-control.input-xs(placeholder='Căutare...' ng-model = 'search.cap_cil')
 #view.col-xs-12.no-scroll-bar.p-0
   #scroll.view-scroll
     table.table.table-bordered.table-hover.p-0
       tbody(infinite-scroll='vm.changeMaxLimit(vm.data, vm.limit)' infinite-scroll-distance='1' infinite-scroll-container='".view-scroll"')
-        tr(ng-repeat = 'r in vm.data | limitTo: vm.limit.max' ng-dblclick='vm.edit(r, $index)')
-          td.text-center(ng-bind='r.name')
-          td.text-center(width='150px' ng-bind='r.type')
-          td.text-center(width='150px' ng-bind='r.liked')
-          td.text-center.cursor-pointer(width='20px' ng-click='vm.edit(r, $index)' uib-tooltip='Editează rând')
+        tr(ng-repeat = 'r in vm.data | filter: search | limitTo: vm.limit.max' ng-dblclick='vm.edit(r, $index)')
+          td.text-center(width='5%' ng-bind='$index+1')
+          td.text-center(width='35%' ng-bind='r.marca')
+          td.text-center(width='35%' ng-bind='r.model')
+          td.text-center(width='5%' ng-bind='r.an_fab')
+          td.text-center(width='5%' ng-bind='r.cap_cil')
+          td.text-center(width='5%' ng-bind='r.imp')
+          td.text-center.cursor-pointer(width='4.75%' ng-click='vm.edit(r, $index)' uib-tooltip='Editează rând')
             i.glyphicon.glyphicon-edit.text-primary
-          td.text-center.cursor-pointer(width='20px' ng-click='vm.remove(r, $index)' uib-tooltip='Șterge rând')
+          td.text-center.cursor-pointer(width='4.75%' ng-click='vm.remove(r, $index)' uib-tooltip='Șterge rând')
             i.fa.fa-trash.text-danger

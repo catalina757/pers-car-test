@@ -1,7 +1,7 @@
 .col-xs-12.p-bottom-5.p-0
   form.form-horizontal
     .col-xs-2.p-0
-      button.btn.btn-xs.btn-success(type='button')
+      button.btn.btn-xs.btn-success(type='button' ng-click='vm.add()')
         i.fa.fa-check
         |  Adaugă
     .col-xs-8
@@ -11,30 +11,42 @@
   table.table.table-bordered.table-hover.p-0
     thead
       tr.warning
-        th(width='48px' rowspan='2') Nr. crt.
-        th(width='150px') Nume, Prenume
-        th(width='150px') CNP
-        th(width='48px' rowspan='2') Varsta
-        th(width='150px') Masini
-        th(width='48px' rowspan='2')
+        th(width='3%' rowspan='2') Nr. crt.
+        th(width='20%') Nume, Prenume
+        th(width='20%') CNP
+        th(width='3%' rowspan='2') Varsta
+        th(width='30%') Masini
+        th(width='4%' rowspan='2')
       tr.warning
         td
-          input.form-control.input-xs(placeholder='Căutare...')
+          input.form-control.input-xs(placeholder='Căutare...' ng-model='searchConcat')
         td
-          input.form-control.input-xs(placeholder='Căutare...')
+          input.form-control.input-xs(placeholder='Căutare...' ng-model='search.cnp')
         td
-          input.form-control.input-xs(placeholder='Căutare...')
+          input.form-control.input-xs(placeholder='Căutare...' ng-model='searchCar')
+          table.table.table-bordered.table-hover.p-0
+            tr
+              th(width='40%') Marca, Model
+              th(width='20%') An fabricatie
+              th(width='20%') Capacitate cilindrica
+              th(width='20%') Impozit
 #view.col-xs-12.no-scroll-bar.p-0
   #scroll.view-scroll
     table.table.table-bordered.table-hover.p-0
       tbody(infinite-scroll='vm.changeMaxLimit(vm.data, vm.limit)' infinite-scroll-distance='1' infinite-scroll-container='".view-scroll"')
-        tr
-          td.text-center(width='48px') 1
-          td.text-center(width='152px') Condrea Catalina
-          td.text-center(width='152px') 2810304235814
-          td.text-center(width='48px') 40
-          td.text-center(width='152px') Skoda
-          td.text-center.cursor-pointer(width='23px' ng-click='vm.edit(r, $index)' uib-tooltip='Editează rând')
+        tr(ng-repeat = 'r in vm.data | filter: vm.filterConcat(searchConcat) | filter: search | filter: vm.filterCar(searchCar) | limitTo: vm.limit.max' ng-dblclick='vm.edit(r, $index)')
+          td.text-center(width='3%' ng-bind='$index+1')
+          td.text-center(width='20%' ng-bind=('r.nume + " " + r.prenume'))
+          td.text-center(width='20%' ng-bind='r.cnp')
+          td.text-center(width='3%' ng-bind='r.varsta')
+          td.text-center(width='30%')
+            table.table.table-bordered.table-hover.p-0
+              tr(ng-repeat='car in r.Pers_Cars | limitTo: vm.limit.max')
+                td(width='40%' ng-bind='car.Car.marca + " " + car.Car.model')
+                td(width='20%' ng-bind='car.Car.an_fab')
+                td(width='20%' ng-bind='car.Car.cap_cil')
+                td(width='20%' ng-bind='car.Car.imp')
+          td.text-center.cursor-pointer(width='1.8%' ng-click='vm.edit(r, $index)' uib-tooltip='Editează rând')
             i.glyphicon.glyphicon-edit.text-primary
-          td.text-center.cursor-pointer(width='23px' ng-click='vm.remove(r, $index)' uib-tooltip='Șterge rând')
+          td.text-center.cursor-pointer(width='1.8%' ng-click='vm.remove(r, $index)' uib-tooltip='Șterge rând')
             i.fa.fa-trash.text-danger

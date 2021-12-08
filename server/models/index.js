@@ -27,10 +27,10 @@ module.exports = function getModels(sequelize, Sequelize) {
 	let arr = [
 	/** DRAFTS **/
 		{path: __dirname + '/information.js', sync: true},
-		{path: __dirname + '/person.js', sync: true},
-		{path: __dirname + '/car.js', sync: true}
+		{path: __dirname + '/pers_car.js', sync: true},
+		{path: __dirname + '/car.js', sync: true},
+		{path: __dirname + '/person.js', sync: true}
 	];
-
 
 	let syncTables = [];
 

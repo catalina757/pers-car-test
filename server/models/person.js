@@ -1,26 +1,30 @@
+'use strict';
+
 module.exports = (sequelize, DataType) => {
-    let model = sequelize.define('Person', {
+    let Person = sequelize.define('Person', {
+        id: {
+            type: DataType.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        cnp: {
+            type: DataType.STRING(13)
+        },
+        varsta: {
+            type: DataType.INTEGER
+        },
         nume: {
             type: DataType.STRING
         },
         prenume: {
             type: DataType.STRING
-        },
-        cnp: {
-            type: DataType.STRING
-        },
-        varsta: {
-            type: DataType.INTEGER
-        },
-        masini: {
-            type: DataType.TEXT
         }
     }, {
         timestamps: false
     });
-    /*
-      Aceasta linie este comentata pentru a demonstra legatura dintre tabelul Information si tabelul Post prin id
-    */
-    // model.belongsTo(sequelize.models.Post, {foreignKey: 'id_post', onDelete: 'set null'});
-    return model;
+
+    Person.hasMany(sequelize.models.Pers_Car);
+    sequelize.models.Pers_Car.belongsTo(Person);
+
+    return Person;
 };

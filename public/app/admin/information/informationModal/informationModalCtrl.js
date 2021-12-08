@@ -8,6 +8,7 @@ function informationModalCtrl($scope, $loading, $uibModal, $uibModalInstance, di
       $loading.start(`loading-container`);
       informationModel.byId.get({id: id_info}).$promise.then(resp => {
         mm.modal = resp;
+        console.log(mm.modal.id);
         $loading.finish(`loading-container`);
       }).catch(() => {toastr.error(`Eroare la preluarea datelor!`);});
     }

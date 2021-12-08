@@ -1,0 +1,25 @@
+.modal-header
+  span {{!mm.modal.id ? 'Adăugare rând' : 'Editare rând'}}
+.modal-body
+  .row
+    form.form-horizontal
+      .col-xs-12.p-bottom-10
+        label.control-label.col-xs-2 Marca
+        .col-xs-3.p-0
+          input.form-control(ng-model='mm.modal.marca')
+        label.control-label.col-xs-2 Model
+        .col-xs-3.p-0
+            input.form-control(ng-model='mm.modal.model')
+      .col-xs-12.p-bottom-10
+        label.control-label.col-xs-2 An fabricatie
+        .col-xs-2.p-0
+          input.form-control(ng-model='mm.modal.an_fab')
+        label.control-label.col-xs-2 Capacitate cilindrica
+        .col-xs-2.p-0
+            input.form-control(type='number' ng-model='mm.modal.cap_cil' ng-change='mm.calcTax(mm.modal.cap_cil)' ng-model-options='{debounce: 500}')
+        label.control-label.col-xs-2 Impozit
+        .col-xs-2.p-0
+            input.form-control(type='number' ng-model='mm.modal.imp')
+.modal-footer
+  button.btn.btn-default(ng-click='$dismiss()') Renunță
+  button.btn.btn-success(ng-click='mm.save(mm.modal)' ng-bind='mm.modal.id ? "Salvează" : "Adaugă"')

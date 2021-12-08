@@ -4,11 +4,11 @@ module.exports = app => {
   const informationCtrl = require('../controllers/informationCtrl')(app.locals.db);
   const router          = express.Router();
 
-  // router.post('/', informationCtrl.create);
-  // router.put('/', informationCtrl.update);
+  router.post('/', informationCtrl.create);
+  router.put('/', informationCtrl.update);
   router.get('/', informationCtrl.findAll);
-  // router.get('/:id', informationCtrl.find);
-  // router.delete('/:id', informationCtrl.destroy);
+  router.get('/:id', informationCtrl.find);
+  router.delete('/:id', informationCtrl.destroy);
 
   return router;
 };
