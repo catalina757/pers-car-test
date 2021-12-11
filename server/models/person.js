@@ -8,7 +8,9 @@ module.exports = (sequelize, DataType) => {
             autoIncrement: true
         },
         cnp: {
-            type: DataType.STRING(13)
+            type: DataType.STRING(13),
+            allowNull: false,
+            unique: true
         },
         varsta: {
             type: DataType.INTEGER

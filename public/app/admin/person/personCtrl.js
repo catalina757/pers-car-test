@@ -7,7 +7,7 @@ function personCtrl($scope, $loading, $localStorage, $uibModal, dialogs, toastr,
     vm.limit = {max: parseInt(window.innerHeight / 20)};
     vm.changeMaxLimit = utils.changeMaxLimit;
 
-    vm.filterConcat = (search) => {
+    vm.filterConcatName = (search) => {
         return function (person) {
             let concatenated = person.nume + " " + person.prenume;
 

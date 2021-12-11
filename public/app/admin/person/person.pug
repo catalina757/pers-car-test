@@ -19,7 +19,7 @@
         th(width='4%' rowspan='2')
       tr.warning
         td
-          input.form-control.input-xs(placeholder='Căutare...' ng-model='searchConcat')
+          input.form-control.input-xs(placeholder='Căutare...' ng-model='searchConcatName')
         td
           input.form-control.input-xs(placeholder='Căutare...' ng-model='search.cnp')
         td
@@ -34,7 +34,7 @@
   #scroll.view-scroll
     table.table.table-bordered.table-hover.p-0
       tbody(infinite-scroll='vm.changeMaxLimit(vm.data, vm.limit)' infinite-scroll-distance='1' infinite-scroll-container='".view-scroll"')
-        tr(ng-repeat = 'r in vm.data | filter: vm.filterConcat(searchConcat) | filter: search | filter: vm.filterCar(searchCar) | limitTo: vm.limit.max' ng-dblclick='vm.edit(r, $index)')
+        tr(ng-repeat = 'r in vm.data | filter: vm.filterConcatName(searchConcatName) | filter: search | filter: vm.filterCar(searchCar) | limitTo: vm.limit.max' ng-dblclick='vm.edit(r, $index)')
           td.text-center(width='3%' ng-bind='$index+1')
           td.text-center(width='20%' ng-bind=('r.nume + " " + r.prenume'))
           td.text-center(width='20%' ng-bind='r.cnp')
