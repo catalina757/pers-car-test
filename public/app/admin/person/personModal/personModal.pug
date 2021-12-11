@@ -35,9 +35,9 @@
       div(ng-if='!mm.modal.id')
         label.control-label.col-xs-2(for='addCars') Masini
         .col-xs-9.p-0
-          ui-select(multiple name='addCars' ng-model='mm.modal.Pers_Cars' theme="select2" ng-disabled="disabled" close-on-select='false')
+          ui-select(multiple name='addCars' ng-model='mm.modal.Pers_Cars.selected' theme="select2" ng-disabled="disabled" close-on-select='false')
             ui-select-match(placeholder='alege o masina') {{$item.marca}}
-            ui-select-choices(repeat = 'car in mm.allCars | propsFilter: {marca: $select.search}')
+            ui-select-choices(repeat = 'car in mm.allCars | filter: $select.search')
              div(ng-bind='car')
 
       div(ng-if='mm.modal.id') {{mm.modal.Pers_Cars}}

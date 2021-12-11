@@ -29,9 +29,9 @@ function personModalCtrl($scope, $loading, $uibModal, $uibModalInstance, dialogs
     };
     load();
 
-    mm.filterSelect('propsFilter', function() {
-        console.log(this.props.allCars);
-    });
+    // mm.filterSelect('propsFilter', function() {
+    //     console.log(this.props.allCars);
+    // });
 
     mm.save = modal => {
         $loading.start(`loading-container`);
