@@ -3,20 +3,14 @@ personModalCtrl.$inject = ['$scope', '$loading', '$uibModal', '$uibModalInstance
 function personModalCtrl($scope, $loading, $uibModal, $uibModalInstance, dialogs, toastr, personModel, carModel, id_person) {
     let mm = this;
 
-    mm.select = {
-        linkedCars: [],
-        unlinkedCars: [],
-        allCars: []
-    };
-
     let load = () => {
         if (id_person) {
             $loading.start(`loading-container`);
             personModel.byId.get({id: id_person}).$promise.then(resp => {
                 mm.modal = resp;
 
-                console.log(mm.modal.Pers_Cars);
-                console.log(mm.modal);
+                // console.log(mm.modal.Pers_Cars);
+                // console.log(mm.modal);
 
                 $loading.finish(`loading-container`);
             }).catch(() => {toastr.error(`Eroare la preluarea datelor!`);});
@@ -24,15 +18,20 @@ function personModalCtrl($scope, $loading, $uibModal, $uibModalInstance, dialogs
 
         carModel.simple.query().$promise.then(resp => {
             mm.allCars = resp;
-            for (let i = 0; i < mm.allCars.length; i++) {
-                mm.select.allCars.push(mm.allCars[i].marca + "," + mm.allCars[i].model);
-            }
+            console.log(mm.allCars);
+            // for (let i = 0; i < mm.allCars.length; i++) {
+            //     mm.select.allCars.push(mm.allCars[i].marca + "," + mm.allCars[i].model);
+            // }
         }).catch(() => {toastr.error(`Eroare la preluarea datelor!`);});
 
-
-        console.log(mm.select);
+        // console.log(mm.modal);
+        // console.log(mm.select);
     };
     load();
+
+    mm.filterSelect('propsFilter', function() {
+        console.log(this.props.allCars);
+    });
 
     mm.save = modal => {
         $loading.start(`loading-container`);
