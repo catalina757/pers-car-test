@@ -1,4 +1,6 @@
 module.exports = db => {
+    'use strict';
+
     return {
         create: (req, res) => {
             db.models.Car.create(req.body).then(() => {
@@ -15,6 +17,23 @@ module.exports = db => {
         findAll: (req, res) => {
             db.query(`SELECT id, marca, model, an_fab, cap_cil, imp
       FROM "Car"
+      ORDER BY id`, { type: db.QueryTypes.SELECT}).then(resp => {
+                res.send(resp);
+            }).catch(() => res.status(401));
+        },
+
+        findUnlinkedCars: (req, res) => {
+            db.query(`SELECT id, marca, model, an_fab, cap_cil, imp
+      FROM "Car" WHERE id NOT IN (SELECT "CarId" FROM "Pers_Car")
+      ORDER BY id`, { type: db.QueryTypes.SELECT}).then(resp => {
+                res.send(resp);
+            }).catch(() => res.status(401));
+        },
+
+        findUnlinkedCarsAndLinkedCarsForPerson: (req, res) => {
+            db.query(`SELECT id, marca, model, an_fab, cap_cil, imp
+                        FROM "Car"
+                        WHERE id NOT IN (SELECT "CarId" FROM "Pers_Car" WHERE "PersonId" != ${req.query.id})
       ORDER BY id`, { type: db.QueryTypes.SELECT}).then(resp => {
                 res.send(resp);
             }).catch(() => res.status(401));

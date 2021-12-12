@@ -9,7 +9,6 @@
           input.form-control(ng-model='mm.modal.nume' type='text' name='nume' required ng-pattern='/^[a-zA-Z]*$/')
           p.text-danger-i(ng-if='myForm.nume.$error.required && myForm.nume.$touched') Numele este obligatoriu
           p.text-danger-i(ng-if='myForm.nume.$error.pattern') Numele trebuie sa contina doar litere
-          <span>{{ myForm.nume }}
         label.control-label.col-xs-2 Prenume
         .col-xs-3.p-0
           input.form-control(ng-model='mm.modal.prenume' type='text' name='prenume' required ng-pattern='/^[a-zA-Z]*$/')
@@ -18,33 +17,38 @@
       .col-xs-12.p-bottom-10
         label.control-label.col-xs-2 CNP
         .col-xs-3.p-0
-          input.form-control(ng-model='mm.modal.cnp' type='text' name='cnp' ng-change='mm.calcAge(mm.modal.cnp)' ng-model-options='{debounce: 1000}' required ng-pattern='/^[1-2]([0-9]{2})(0[0-9]|1[012])(0[1-9]|[12][0-9]|3[01])([0-9]{6})$/' ng-minlength="13" ng-maxlength="13")
+          input.form-control(ng-model='mm.modal.cnp' type='text' name='cnp' ng-change='mm.calcAge(mm.modal.cnp)' ng-model-options='{debounce: 1000}' required ng-pattern='/^[1-2]([0-9]{2})(0[0-9]|1[012])(0[1-9]|[12][0-9]|3[01])([0-9]{6})$/')
           p.text-danger-i(ng-if='myForm.cnp.$error.required && myForm.cnp.$touched') CNP-ul este obligatoriu
           p.text-danger-i(ng-if='myForm.cnp.$error.pattern') CNP-ul trebuie sa contina doar cifre si sa fie de forma: XYYMMDDZZZZZZ
-          p.text-danger-i(ng-if='myForm.cnp.$error.minlength') CNP-ul este prea scurt
-          p.text-danger-i(ng-if='myForm.cnp.$error.maxlength') CNP-ul este prea lung
         label.control-label.col-xs-2 Varsta
         .col-xs-3.p-0
-          input.form-control(ng-model='mm.modal.varsta' type='number' name='varsta' required)
-          p.text-danger-i(ng-if='myForm.cnp.$error.required && myForm.cnp.$touched') CNP-ul este obligatoriu, nu poate fi calculata varsta
-          p.text-danger-i(ng-if='myForm.cnp.$error.pattern') CNP-ul trebuie sa fie valid, nu poate fi calculata varsta
-          p.text-danger-i(ng-if='myForm.cnp.$error.minlength') CNP-ul este prea scurt, nu poate fi calculata varsta
-          p.text-danger-i(ng-if='myForm.cnp.$error.maxlength') CNP-ul este prea lung, nu poate fi calculata varsta
+          input.form-control(ng-model='mm.modal.varsta' type='number' name='varsta' required disabled)
+          p.text-danger-i(ng-if='myForm.varsta.$error.required && myForm.cnp.$touched && myForm.cnp.$error.pattern') CNP incorect, nu poate fi calculata varsta
       .col-xs-12.p-bottom-10
 
       div(ng-if='!mm.modal.id')
         label.control-label.col-xs-2(for='addCars') Masini
         .col-xs-9.p-0
-          ui-select(multiple name='addCars' ng-model='mm.modal.Pers_Cars.selected' theme="select2" ng-disabled="disabled" close-on-select='false')
+          ui-select(multiple name='addCars' ng-model='mm.modal.Pers_Cars' close-on-select='false')
             ui-select-match(placeholder='alege o masina') {{$item.marca}}
-            ui-select-choices(repeat = 'car in mm.allCars | filter: $select.search')
-             div(ng-bind='car')
+            ui-select-choices(repeat = 'car in mm.unlinkedCars | filter: $select.search | orderBy: "marca"')
+              div id: {{ car.id }}
+              div marca: {{ car.marca }}
+              small model: {{ car.model + ", "}}
+                span an fabricatie: {{ car.an_fab + ", " }}
+                span capacitate cilindrica: {{ car.cap_cil }}
 
-      div(ng-if='mm.modal.id') {{mm.modal.Pers_Cars}}
+      div(ng-if='mm.modal.id')
         label.control-label.col-xs-2(for='editCars') Masini
         .col-xs-9.p-0
-          select#cars.form-control(name='editCars' ng-model='mm.modal.Pers_Cars')
-          option(ng-repeat='car in mm.allCars' value='{{car}}') {{ car }}
+          ui-select(multiple name='editCars' ng-model='mm.modal.Pers_Cars' close-on-select='false' on-remove='mm.removeFromSelect($item)')
+            ui-select-match(placeholder='alege o masina') {{$item.Car.marca || $item.marca}}
+            ui-select-choices(repeat = 'car in mm.unlinkedCarsAndLinkedCarsForPerson | filter: $select.search | orderBy: "marca"')
+              div id: {{ car.id }}
+              div marca: {{ car.marca }}
+              small model: {{ car.model + ", "}}
+                span an fabricatie: {{ car.an_fab + ", " }}
+                span capacitate cilindrica: {{ car.cap_cil }}
 
 .modal-footer
   button.btn.btn-default(ng-click='$dismiss()') Renunță

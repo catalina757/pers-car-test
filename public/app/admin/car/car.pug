@@ -31,7 +31,7 @@
   #scroll.view-scroll
     table.table.table-bordered.table-hover.p-0
       tbody(infinite-scroll='vm.changeMaxLimit(vm.data, vm.limit)' infinite-scroll-distance='1' infinite-scroll-container='".view-scroll"')
-        tr(ng-repeat = 'r in vm.data | filter: search | limitTo: vm.limit.max' ng-dblclick='vm.edit(r, $index)')
+        tr(ng-repeat = 'r in vm.data | filter: search | orderBy: "marca" | limitTo: vm.limit.max' ng-dblclick='vm.edit(r, $index)')
           td.text-center(width='5%' ng-bind='$index+1')
           td.text-center(width='35%' ng-bind='r.marca')
           td.text-center(width='35%' ng-bind='r.model')

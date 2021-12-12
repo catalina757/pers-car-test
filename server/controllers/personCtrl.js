@@ -3,14 +3,36 @@
 module.exports = db => {
     return {
         create: (req, res) => {
-            db.models.Person.create(req.body).then(() => {
+            db.models.Person.create(req.body).then((person) => {
+                let Cars = req.body.Pers_Cars;
+
+                for(let i = 0; i < Cars.length; i++) {
+                    db.models.Pers_Car.create({
+                        CarId: Cars[i].id,
+                        PersonId: person.id,
+                    });
+                }
+
                 res.send({ success: true });
             }).catch(() => res.status(401));
         },
 
         update: (req, res) => {
             db.models.Person.update(req.body, { where: { id: req.body.id } }).then(() => {
-                res.send({ success: true });
+                db.models.Pers_Car.destroy({where: {PersonId: req.body.id} }).then(() => {
+                    let Cars = req.body.Pers_Cars;
+
+                    for(let i = 0; i < Cars.length; i++) {
+
+                        db.models.Pers_Car.create({
+                            CarId: Cars[i].hasOwnProperty('CarId') ? Cars[i].CarId : Cars[i].id,
+                            PersonId: req.body.id,
+                        });
+                    }
+
+                    setTimeout(() => {return res.send({ success: true }); }, 1000);
+                }).catch(() => res.status(401));
+
             }).catch(() => res.status(401));
         },
 
