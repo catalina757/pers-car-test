@@ -24,10 +24,15 @@ module.exports = (sequelize, DataType) => {
         }
     }, {
         timestamps: false
+    }, {
+        freezeTableName: true
     });
 
-    Car.hasMany(sequelize.models.Pers_Car);
-    sequelize.models.Pers_Car.belongsTo(Car);
+    // Car.hasOne(sequelize.models.Pers_Car);
+    // sequelize.models.Pers_Car.belongsTo(Car);
+    // Car.associate = (models) => {
+    //     Car.hasOne(models.Pers_Car, {foreignKey: 'CarId'});
+    // };
 
     return Car;
 };

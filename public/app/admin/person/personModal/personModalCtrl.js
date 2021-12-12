@@ -61,16 +61,10 @@ function personModalCtrl($scope, $loading, $uibModal, $uibModalInstance, dialogs
             let dob = new Date(dateString.substr(0,2), dateString.substr(2,2)-1, dateString.substr(4,2));
             let age = new Date() - dob;
             mm.modal.varsta = Math.floor(age/365/24/60/60/1000);
-            return mm.modal.varsta;
         } else {
             mm.modal.varsta = null;
-            return mm.modal.varsta;
         }
-    };
 
-    mm.removeFromSelect = (modal) => {
-        console.log(modal);
-        console.log(mm.unlinkedCars);
-
+        return mm.modal.varsta;
     };
 }

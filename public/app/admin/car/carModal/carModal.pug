@@ -2,24 +2,31 @@
   span {{!mm.modal.id ? 'Adăugare rând' : 'Editare rând'}}
 .modal-body
   .row
-    form.form-horizontal
+    form.form-horizontal(name='carForm')
       .col-xs-12.p-bottom-10
         label.control-label.col-xs-2 Marca
         .col-xs-3.p-0
-          input.form-control(ng-model='mm.modal.marca')
+          input.form-control(ng-model='mm.modal.marca' type='text' name='marca' required)
+          p.text-danger-i(ng-show='carForm.marca.$error.required && carForm.marca.$touched') Marca este obligatorie
         label.control-label.col-xs-2 Model
         .col-xs-3.p-0
-            input.form-control(ng-model='mm.modal.model')
+            input.form-control(ng-model='mm.modal.model' type='text' name='model' required)
+            p.text-danger-i(ng-show='carForm.model.$error.required && carForm.model.$touched') Modelul este obligatoriu
       .col-xs-12.p-bottom-10
         label.control-label.col-xs-2 An fabricatie
         .col-xs-2.p-0
-          input.form-control(ng-model='mm.modal.an_fab')
+          input.form-control(ng-model='mm.modal.an_fab' type='number' name='anFab' required ng-pattern='/^(18|19|20)([0-9]{2})$/')
+          p.text-danger-i(ng-show='carForm.anFab.$error.required && carForm.anFab.$touched') Anul de fabricatie este obligatoriu
+          p.text-danger-i(ng-show='carForm.anFab.$error.pattern') Anul de fabricatie trebuie sa fie din 4 cifre (intre 1800 - 2099)
         label.control-label.col-xs-2 Capacitate cilindrica
         .col-xs-2.p-0
-            input.form-control(type='number' ng-model='mm.modal.cap_cil' ng-change='mm.calcTax(mm.modal.cap_cil)' ng-model-options='{debounce: 500}')
+            input.form-control(type='number' ng-model='mm.modal.cap_cil' ng-change='mm.calcTax(mm.modal.cap_cil)' ng-model-options='{debounce: 500}' name='capCil' required ng-pattern='/^([1-9])([0-9]{0,3})$/')
+            p.text-danger-i(ng-show='carForm.capCil.$error.required && carForm.capCil.$touched') Capacitatea cilindrica este oligatorie
+            p.text-danger-i(ng-show='carForm.capCil.$error.pattern') Capacitatea cilindrica trebuie sa fie din 1 pana la 4 cifre
         label.control-label.col-xs-2 Impozit
         .col-xs-2.p-0
-            input.form-control(type='number' ng-model='mm.modal.imp')
+            input.form-control(type='number' ng-model='mm.modal.imp' name='impozit' required disabled)
+            p.text-danger-i(ng-show='carForm.impozit.$error.required && (carForm.capCil.$touched || carForm.capCil.$error.pattern)') Capacitate cilindrica incorecta, nu poate fi calculat impozitul
 .modal-footer
   button.btn.btn-default(ng-click='$dismiss()') Renunță
-  button.btn.btn-success(ng-click='mm.save(mm.modal)' ng-bind='mm.modal.id ? "Salvează" : "Adaugă"')
+  button.btn.btn-success(ng-click='mm.save(mm.modal)' ng-bind='mm.modal.id ? "Salvează" : "Adaugă"' ng-disabled='carForm.$invalid')

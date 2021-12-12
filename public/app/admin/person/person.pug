@@ -23,7 +23,7 @@
         td
           input.form-control.input-xs(placeholder='Căutare...' ng-model='search.cnp')
         td
-          input.form-control.input-xs(placeholder='Căutare...' ng-model='searchCar')
+          input.form-control.input-xs(placeholder='Căutare...' ng-model='searchConcatCar')
           table.table.table-bordered.table-hover.p-0
             tr
               th(width='40%') Marca, Model
@@ -34,14 +34,14 @@
   #scroll.view-scroll
     table.table.table-bordered.table-hover.p-0
       tbody(infinite-scroll='vm.changeMaxLimit(vm.data, vm.limit)' infinite-scroll-distance='1' infinite-scroll-container='".view-scroll"')
-        tr(ng-repeat = 'r in vm.data | filter: vm.filterConcatName(searchConcatName) | filter: search | filter: vm.filterCar(searchCar) | orderBy: "nume" | limitTo: vm.limit.max' ng-dblclick='vm.edit(r, $index)')
+        tr(ng-repeat = 'r in vm.data | filter: vm.filterConcatName(searchConcatName) | filter: search | filter: vm.filterCar(searchConcatCar) | orderBy: "nume" | limitTo: vm.limit.max' ng-dblclick='vm.edit(r, $index)')
           td.text-center(width='3%' ng-bind='$index+1')
           td.text-center(width='20%' ng-bind=('r.nume + " " + r.prenume'))
           td.text-center(width='20%' ng-bind='r.cnp')
           td.text-center(width='3%' ng-bind='r.varsta')
           td.text-center(width='30%')
             table.table.table-bordered.table-hover.p-0
-              tr(ng-repeat='car in r.Pers_Cars | limitTo: vm.limit.max')
+              tr(ng-repeat='car in r.Pers_Car | limitTo: vm.limit.max')
                 td(width='40%' ng-bind='car.Car.marca + " " + car.Car.model')
                 td(width='20%' ng-bind='car.Car.an_fab')
                 td(width='20%' ng-bind='car.Car.cap_cil')

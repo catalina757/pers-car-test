@@ -23,13 +23,13 @@
         label.control-label.col-xs-2 Varsta
         .col-xs-3.p-0
           input.form-control(ng-model='mm.modal.varsta' type='number' name='varsta' required disabled)
-          p.text-danger-i(ng-if='myForm.varsta.$error.required && myForm.cnp.$touched && myForm.cnp.$error.pattern') CNP incorect, nu poate fi calculata varsta
+          p.text-danger-i(ng-if='myForm.varsta.$error.required && (myForm.cnp.$touched || myForm.cnp.$error.pattern)') CNP incorect, nu poate fi calculata varsta
       .col-xs-12.p-bottom-10
 
       div(ng-if='!mm.modal.id')
         label.control-label.col-xs-2(for='addCars') Masini
         .col-xs-9.p-0
-          ui-select(multiple name='addCars' ng-model='mm.modal.Pers_Cars' close-on-select='false')
+          ui-select(multiple name='addCars' ng-model='mm.modal.Pers_Car' close-on-select='false')
             ui-select-match(placeholder='alege o masina') {{$item.marca}}
             ui-select-choices(repeat = 'car in mm.unlinkedCars | filter: $select.search | orderBy: "marca"')
               div id: {{ car.id }}
@@ -41,7 +41,7 @@
       div(ng-if='mm.modal.id')
         label.control-label.col-xs-2(for='editCars') Masini
         .col-xs-9.p-0
-          ui-select(multiple name='editCars' ng-model='mm.modal.Pers_Cars' close-on-select='false' on-remove='mm.removeFromSelect($item)')
+          ui-select(multiple name='editCars' ng-model='mm.modal.Pers_Car' close-on-select='false')
             ui-select-match(placeholder='alege o masina') {{$item.Car.marca || $item.marca}}
             ui-select-choices(repeat = 'car in mm.unlinkedCarsAndLinkedCarsForPerson | filter: $select.search | orderBy: "marca"')
               div id: {{ car.id }}
@@ -52,4 +52,4 @@
 
 .modal-footer
   button.btn.btn-default(ng-click='$dismiss()') Renunță
-  button.btn.btn-success(ng-click='mm.save(mm.modal)' ng-bind='mm.modal.id ? "Salvează" : "Adaugă"')
+  button.btn.btn-success(ng-click='mm.save(mm.modal)' ng-bind='mm.modal.id ? "Salvează" : "Adaugă"' ng-disabled='myForm.$invalid')

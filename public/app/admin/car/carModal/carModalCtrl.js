@@ -35,16 +35,15 @@ function carModalCtrl($scope, $loading, $uibModal, $uibModalInstance, dialogs, t
     };
 
     mm.calcTax = (cap_cil) => {
-        if (cap_cil <= 1500) {
+        if (cap_cil <= 1500 && cap_cil > 0) {
             mm.modal.imp = 50;
-            return;
-        }
-
-        if (cap_cil <= 2000) {
+        } else if (cap_cil <= 2000) {
             mm.modal.imp = 100;
-            return;
+        } else if (cap_cil > 2000) {
+            mm.modal.imp = 200;
+        } else {
+            mm.modal.imp = null;
         }
-
-        mm.modal.imp = 200;
+        return mm.modal.imp;
     };
 }

@@ -17,7 +17,7 @@ function personCtrl($scope, $loading, $localStorage, $uibModal, dialogs, toastr,
 
     vm.filterCar = (search) => {
         return function (person) {
-            let stringifiedCars = JSON.stringify(person.Pers_Cars);
+            let stringifiedCars = JSON.stringify(person.Pers_Car);
             return !search || stringifiedCars.toLowerCase().indexOf(search.toLowerCase()) !== -1;
         };
     };
