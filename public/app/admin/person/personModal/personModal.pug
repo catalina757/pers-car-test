@@ -29,8 +29,8 @@
       div(ng-if='!mm.modal.id')
         label.control-label.col-xs-2(for='addCars') Masini
         .col-xs-9.p-0
-          ui-select(multiple name='addCars' ng-model='mm.modal.Pers_Car' close-on-select='false')
-            ui-select-match(placeholder='alege o masina') {{$item.marca}}
+          ui-select(multiple name='addCars' ng-model='mm.modal.Pers_Cars' close-on-select='false')
+            ui-select-match(placeholder='alege masinile') {{$item.marca}}
             ui-select-choices(repeat = 'car in mm.unlinkedCars | filter: $select.search | orderBy: "marca"')
               div id: {{ car.id }}
               div marca: {{ car.marca }}
@@ -41,8 +41,8 @@
       div(ng-if='mm.modal.id')
         label.control-label.col-xs-2(for='editCars') Masini
         .col-xs-9.p-0
-          ui-select(multiple name='editCars' ng-model='mm.modal.Pers_Car' close-on-select='false')
-            ui-select-match(placeholder='alege o masina') {{$item.Car.marca || $item.marca}}
+          ui-select(multiple name='editCars' ng-model='mm.modal.Pers_Cars' close-on-select='false')
+            ui-select-match(placeholder='alege masinile') {{$item.Car.marca || $item.marca}}
             ui-select-choices(repeat = 'car in mm.unlinkedCarsAndLinkedCarsForPerson | filter: $select.search | orderBy: "marca"')
               div id: {{ car.id }}
               div marca: {{ car.marca }}

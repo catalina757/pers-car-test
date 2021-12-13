@@ -5,6 +5,7 @@ module.exports = (sequelize, DataType) => {
         id: {
             type: DataType.INTEGER,
             primaryKey: true,
+            allowNull: false,
             autoIncrement: true
         },
         marca: {
@@ -17,7 +18,8 @@ module.exports = (sequelize, DataType) => {
             type: DataType.INTEGER
         },
         cap_cil: {
-            type: DataType.INTEGER
+            type: DataType.INTEGER,
+            allowNull: false
         },
         imp: {
             type: DataType.INTEGER
@@ -28,11 +30,6 @@ module.exports = (sequelize, DataType) => {
         freezeTableName: true
     });
 
-    // Car.hasOne(sequelize.models.Pers_Car);
-    // sequelize.models.Pers_Car.belongsTo(Car);
-    // Car.associate = (models) => {
-    //     Car.hasOne(models.Pers_Car, {foreignKey: 'CarId'});
-    // };
 
     return Car;
 };

@@ -54,6 +54,11 @@ module.exports = function getModels(sequelize, Sequelize) {
 		}
 	}
 
+	sequelize.models.Person.hasMany(sequelize.models.Pers_Car);
+	sequelize.models.Car.hasOne(sequelize.models.Pers_Car);
+	sequelize.models.Pers_Car.belongsTo(sequelize.models.Car, {through: 'Pers_Car'});
+	sequelize.models.Pers_Car.belongsTo(sequelize.models.Person, {through: 'Pers_Car'});
+
 	if(syncTables.length && process.env.RUN_CRON === 'true'){
 		_.each(syncTables, file => {
 			console.log('Sync table: ', file);
@@ -63,12 +68,13 @@ module.exports = function getModels(sequelize, Sequelize) {
 	}
 
 	//if (syncTables.length) {
-	//	_.each(syncTables, file => {
-	//		console.log('Sync table: ', file);
-	//		file.sync({alter: true, logging: false});
-	//		// file.sync();
-	//	});
-	//}
+	// 	//	_.each(syncTables, file => {
+	// 	//		console.log('Sync table: ', file);
+	// 	//		file.sync({alter: true, logging: false});
+	// 	//		// file.sync();
+	// 	//	});
+	// 	//}
+
 
 
 	return sequelize;

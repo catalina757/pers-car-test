@@ -5,6 +5,7 @@ module.exports = (sequelize, DataType) => {
         id: {
             type: DataType.INTEGER,
             primaryKey: true,
+            allowNull: false,
             autoIncrement: true
         }
     }, {
@@ -12,10 +13,6 @@ module.exports = (sequelize, DataType) => {
     }, {
         freezeTableName: true
     });
-
-
-    Pers_Car.belongsTo(sequelize.models.Person, {foreignKey: 'PersonId'});
-    Pers_Car.belongsTo(sequelize.models.Car, {foreignKey: 'CarId'});
 
     return Pers_Car;
 };

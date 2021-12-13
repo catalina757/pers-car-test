@@ -17,7 +17,7 @@ function personCtrl($scope, $loading, $localStorage, $uibModal, dialogs, toastr,
 
     vm.filterCar = (search) => {
         return function (person) {
-            let stringifiedCars = JSON.stringify(person.Pers_Car);
+            let stringifiedCars = JSON.stringify(person.Pers_Cars);
             return !search || stringifiedCars.toLowerCase().indexOf(search.toLowerCase()) !== -1;
         };
     };
@@ -26,6 +26,8 @@ function personCtrl($scope, $loading, $localStorage, $uibModal, dialogs, toastr,
         $loading.start(`loading-container`);
         personModel.simple.query().$promise.then(resp => {
             vm.data = resp;
+            console.log(vm.data);
+
             $loading.finish(`loading-container`);
             $(window).trigger('resize');
         }).catch(() => {toastr.error(`Eroare la preluarea datelor!`);});

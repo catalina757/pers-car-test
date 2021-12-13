@@ -49,7 +49,7 @@ function personModalCtrl($scope, $loading, $uibModal, $uibModalInstance, dialogs
             }).catch(
                 (e) => {
                     $loading.finish(`loading-container`);
-                    toastr.error(`Eroare la salvarea datelor! Exista deja CNP-ul! ${e}`);
+                    toastr.error(`Eroare la salvarea datelor! Exista deja CNP-ul in baza de date! ${e}`);
                 }
             );
         }

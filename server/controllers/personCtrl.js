@@ -4,8 +4,8 @@ module.exports = db => {
     return {
         create: (req, res) => {
             db.models.Person.create(req.body).then((person) => {
-                if(typeof req.body.Pers_Car !== 'undefined' && req.body.Pers_Car !== null && req.body.Pers_Car.length) {
-                    let Cars = req.body.Pers_Car;
+                if(typeof req.body.Pers_Cars !== 'undefined' && req.body.Pers_Cars !== null && req.body.Pers_Cars.length) {
+                    let Cars = req.body.Pers_Cars;
 
                     for (let i = 0; i < Cars.length; i++) {
                         db.models.Pers_Car.create({
@@ -22,7 +22,7 @@ module.exports = db => {
         update: (req, res) => {
             db.models.Person.update(req.body, { where: { id: req.body.id } }).then(() => {
                 db.models.Pers_Car.destroy({where: {PersonId: req.body.id} }).then(() => {
-                    let Cars = req.body.Pers_Car;
+                    let Cars = req.body.Pers_Cars;
 
                     for(let i = 0; i < Cars.length; i++) {
 
@@ -39,6 +39,7 @@ module.exports = db => {
         },
 
         findAll: (req, res) => {
+
             db.models.Person.findAll({
                 include: [
                     {
