@@ -32,7 +32,6 @@
           ui-select(multiple name='addCars' ng-model='mm.modal.Pers_Cars' close-on-select='false')
             ui-select-match(placeholder='alege masinile') {{$item.marca}}
             ui-select-choices(repeat = 'car in mm.unlinkedCars | filter: $select.search | orderBy: "marca"')
-              div id: {{ car.id }}
               div marca: {{ car.marca }}
               small model: {{ car.model + ", "}}
                 span an fabricatie: {{ car.an_fab + ", " }}
@@ -44,7 +43,6 @@
           ui-select(multiple name='editCars' ng-model='mm.modal.Pers_Cars' close-on-select='false')
             ui-select-match(placeholder='alege masinile') {{$item.Car.marca || $item.marca}}
             ui-select-choices(repeat = 'car in mm.unlinkedCarsAndLinkedCarsForPerson | filter: $select.search | orderBy: "marca"')
-              div id: {{ car.id }}
               div marca: {{ car.marca }}
               small model: {{ car.model + ", "}}
                 span an fabricatie: {{ car.an_fab + ", " }}
