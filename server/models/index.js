@@ -55,7 +55,7 @@ module.exports = function getModels(sequelize, Sequelize) {
 	}
 
 	sequelize.models.Person.hasMany(sequelize.models.Pers_Car);
-	sequelize.models.Car.hasOne(sequelize.models.Pers_Car);
+	sequelize.models.Car.hasOne(sequelize.models.Pers_Car, {onDelete: 'cascade', hooks:true});
 	sequelize.models.Pers_Car.belongsTo(sequelize.models.Car, {through: 'Pers_Car'});
 	sequelize.models.Pers_Car.belongsTo(sequelize.models.Person, {through: 'Pers_Car'});
 
