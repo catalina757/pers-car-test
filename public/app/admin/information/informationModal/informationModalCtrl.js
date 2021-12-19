@@ -1,5 +1,6 @@
 angular.module('taxes-app').controller('informationModalCtrl', informationModalCtrl);
 informationModalCtrl.$inject = ['$scope', '$loading', '$uibModal', '$uibModalInstance', 'dialogs', 'toastr', 'informationModel', 'id_info'];
+
 function informationModalCtrl($scope, $loading, $uibModal, $uibModalInstance, dialogs, toastr, informationModel, id_info) {
   let mm = this;
 
@@ -10,7 +11,9 @@ function informationModalCtrl($scope, $loading, $uibModal, $uibModalInstance, di
         mm.modal = resp;
         console.log(mm.modal.id);
         $loading.finish(`loading-container`);
-      }).catch(() => {toastr.error(`Eroare la preluarea datelor!`);});
+      }).catch(() => {
+        toastr.error(`Eroare la preluarea datelor!`);
+      });
     }
   };
   load();
@@ -30,5 +33,5 @@ function informationModalCtrl($scope, $loading, $uibModal, $uibModalInstance, di
         $uibModalInstance.close();
       }).catch(e => toastr.error(`Eroare la salvarea datelor! ${e}`));
     }
-	};
+  };
 }

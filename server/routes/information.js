@@ -1,8 +1,8 @@
 module.exports = app => {
   'use strict';
-  const express         = require('express');
+  const express = require('express');
   const informationCtrl = require('../controllers/informationCtrl')(app.locals.db);
-  const router          = express.Router();
+  const router = express.Router();
 
   router.post('/', informationCtrl.create);
   router.put('/', informationCtrl.update);

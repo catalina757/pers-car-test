@@ -1,5 +1,6 @@
 angular.module('taxes-app').controller('informationCtrl', informationCtrl);
 informationCtrl.$inject = ['$scope', '$loading', '$localStorage', '$uibModal', 'dialogs', 'toastr', 'informationModel', 'utils'];
+
 function informationCtrl($scope, $loading, $localStorage, $uibModal, dialogs, toastr, informationModel, utils) {
   "use strict";
   let vm = this;
@@ -13,14 +14,16 @@ function informationCtrl($scope, $loading, $localStorage, $uibModal, dialogs, to
       vm.data = resp;
       $loading.finish(`loading-container`);
       $(window).trigger('resize');
-    }).catch(() => {toastr.error(`Eroare la preluarea datelor!`);});
+    }).catch(() => {
+      toastr.error(`Eroare la preluarea datelor!`);
+    });
   };
   load();
 
   $(window).resize(() => {
     vm.limit = {max: parseInt(window.innerHeight / 20)};
     utils.setHeight('view', 40, 'maxHeight');
-		utils.setHeight('scroll', 40, 'maxHeight');
+    utils.setHeight('scroll', 40, 'maxHeight');
   });
 
   vm.add = () => {
@@ -40,7 +43,7 @@ function informationCtrl($scope, $loading, $localStorage, $uibModal, dialogs, to
       controllerAs: 'mm',
       size: 'sm',
       resolve: {id_info: () => id}
-    }).result.then(()=>load()).catch(()=>null);
+    }).result.then(() => load()).catch(() => null);
   };
 
   vm.remove = ob => {
